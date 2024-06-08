@@ -1,4 +1,6 @@
 import Image from "next/image";
+import { motion } from 'framer-motion';
+import { MotionDiv } from "./MotionDiv";
 
 export interface AnimeProp {
   id: string;
@@ -17,15 +19,31 @@ interface Prop {
   index: number;
 }
 
-function AnimeCard({ anime }: Prop) {
+const variants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1 }
+};
+
+function AnimeCard({ anime, index }: Prop) {
   return (
-    <div className="max-w-sm rounded relative w-full">
+    <MotionDiv
+      variants={variants}
+      initial="hidden"
+      animate="visible"
+      transition={{
+        delay: index * 0.25,
+        ease: "easeInOut",
+        duration: 0.5
+      }}
+      className="max-w-sm rounded-lg relative w-full bg-[#1c1e24] p-4"
+    >
       <div className="relative w-full h-[37vh]">
         <Image
-          src={`https://shikimori.one${anime.image.original} `}
+          src={`https://shikimori.one${anime.image.original}`}
           alt={anime.name}
-          fill
-          className="rounded-xl"
+          layout="fill"
+          className="rounded-xl object-cover"
+          loading="lazy"
         />
       </div>
       <div className="py-4 flex flex-col gap-3">
@@ -64,7 +82,7 @@ function AnimeCard({ anime }: Prop) {
           </div>
         </div>
       </div>
-    </div>
+    </MotionDiv>
   );
 }
 
