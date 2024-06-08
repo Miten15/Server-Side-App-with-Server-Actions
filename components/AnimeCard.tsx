@@ -35,14 +35,14 @@ function AnimeCard({ anime, index }: Prop) {
         ease: "easeInOut",
         duration: 0.5
       }}
-      className="max-w-sm rounded-lg relative w-full bg-[#1c1e24] p-4"
+      className="max-w-sm rounded-lg relative w-full bg-[#1c1e24] p-4 shadow-lg hover:shadow-xl transition-shadow duration-300"
     >
-      <div className="relative w-full h-[37vh]">
+      <div className="relative w-full h-[40vh] rounded-lg overflow-hidden">
         <Image
           src={`https://shikimori.one${anime.image.original}`}
           alt={anime.name}
           layout="fill"
-          className="rounded-xl object-cover"
+          className="object-cover"
           loading="lazy"
         />
       </div>
@@ -60,7 +60,7 @@ function AnimeCard({ anime, index }: Prop) {
         <div className="flex gap-4 items-center">
           <div className="flex flex-row gap-2 items-center">
             <Image
-              src="./episodes.svg"
+              src="/episodes.svg"
               alt="episodes"
               width={20}
               height={20}
@@ -72,7 +72,7 @@ function AnimeCard({ anime, index }: Prop) {
           </div>
           <div className="flex flex-row gap-2 items-center">
             <Image
-              src="./star.svg"
+              src="/star.svg"
               alt="star"
               width={18}
               height={18}
